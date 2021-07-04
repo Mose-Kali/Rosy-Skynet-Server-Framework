@@ -1,0 +1,4 @@
+Test()@view
+{
+    ResponseData='Test\\CubismSdkTest\\Samples\\TypeScript\\Demo\\Welcome.html';
+}

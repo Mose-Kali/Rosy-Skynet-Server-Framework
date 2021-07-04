@@ -1,0 +1,23 @@
+exports.%%%%%%=async function (req,res,data) {
+    try 
+    {
+        var QuyData=SkynetHttpParser.Parse(req,data)
+        var ContentType="application/json;chartset='utf8'"
+        @@@@@@
+        if($$$$$$)
+        {
+            var ResponseData
+            ######
+            return ResponseData
+        }
+        else
+        {
+            return 'error.html'
+        }
+    } 
+    catch (error) 
+    {
+        SkynetLogger.Error(error)
+        return 'error.html'
+    }
+}  

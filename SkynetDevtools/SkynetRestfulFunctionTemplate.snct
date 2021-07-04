@@ -1,0 +1,29 @@
+exports.%%%%%%=async function (req,res,data) {
+    try 
+    {
+        var QuyData=SkynetHttpParser.Parse(req,data)
+        var ContentType="application/json;chartset='utf8'"
+        @@@@@@
+        if($$$$$$)
+        {
+            var ResponseData
+            ######
+            res.writeHead(200,{"Content-Type":ContentType,"length":ResponseData.length})
+            res.write(ResponseData);
+            res.end();
+        }
+        else
+        {
+            res.writeHead(200,{"Content-Type":`application/json;chartset='utf8'`})
+            res.write('{"status":"ready","data":{"Error":true,"Note":"Error","Success":false}}');
+            res.end();
+        }
+    } 
+    catch (error) 
+    {
+        SkynetLogger.Error(error)
+        res.writeHead(201,{"Content-Type":`application/json;chartset='utf8'`})
+        res.write('{"status":"error","data":{"Success":false}}');
+        res.end();
+    }
+}  

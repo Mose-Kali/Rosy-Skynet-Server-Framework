@@ -1,0 +1,50 @@
+
+SetUsertoGroupInvisiable(UserID,GroupID)
+{
+    var result=await SkynetMySQL.query("INSERT INTO group_user_invisiable(Group_Id,User_Id) VALUE('"+GroupID+"','"+UserID+"')")
+    ResponseData='{"status":"ready","data":{"Success":true}}'
+}
+
+SetUsertoGroupVisiable(UserID,GroupID)
+{
+    var result=await SkynetMySQL.query("DELETE FROM group_user_invisiable WHERE User_Id='"+UserID+"' AND Group_Id='"+GroupID+"'")
+    ResponseData='{"status":"ready","data":{"Success":true}}'
+}
+
+SetUsertoUserInvisiable(UserID,UserInVisiableID)
+{
+    var result=await SkynetMySQL.query("INSERT INTO user_user_invisiable(User_Id,User_Invisiable_Id) VALUE('"+UserID+"','"+UserInVisiableID+"')")
+    ResponseData='{"status":"ready","data":{"Success":true}}'
+}
+
+SetUsertoUserVisiable(UserID,UserInVisiableID)
+{
+    var result=await SkynetMySQL.query("DELETE FROM user_user_invisiable WHERE User_Id='"+UserID+"' AND User_Invisiable_Id='"+UserInVisiableID+"'")
+    ResponseData='{"status":"ready","data":{"Success":true}}'
+}
+
+DownloadApkFile()
+{
+    var result=await SkynetMySQL.query("SELECT Apk_Id,Apk_Name,Apk_Version,Apk_Update_Time,Apk_Path FROM apk_list ORDER BY `Apk_Update_Time` DESC LIMIT 1")
+    ResponseData=fs.readFileSync('./SkynetResources/'+result[0].Apk_Path)
+}
+
+UpdateUserThemeData(UserID,UserThemeColor,UserBrightnessDark)
+{
+    var result=await SkynetMySQL.query("UPDATE userlist SET User_Theme_Color="+UserThemeColor+",User_Brightness_Dark="+UserBrightnessDark+" WHERE BINARY User_Id='"+UserID+"'")
+    ResponseData='{"status":"ready","data":{"Success":true}}'
+}
+
+RequestUserAppThemeResList(UserID,Item)
+{
+    var ff=fs.readdirSync('./SkynetResources/UserResources/'+UserID+'/AppTheme/'+Item)
+    ResponseData='{"status":"ready","data":{"Success":true,"Files":'+JSON.stringify(ff)+'}}'
+}
+
+RequestUserAppThemeRes(UserID,Item,File)
+{
+    let extName = path.extname('./SkynetResources/UserResources/'+UserID+'/AppTheme/'+Item+'/'+File);
+    var mime = resMime.getMime(fs,extName);
+    ContentType=`${mime};chartset='utf8'`
+    ResponseData=fs.readFileSync('./SkynetResources/UserResources/'+UserID+'/AppTheme/'+Item+'/'+File)
+}

@@ -1,0 +1,15 @@
+{
+    "SkynetSystem":
+    {
+        "Port":8083,
+        "ControllerMapper":"\\SkynetControllerMapper\\SkynetControllerMapper.json",
+        "DebugMode":true
+    },
+    "MySQL":{
+        "host":"host",
+        "user":"user",
+        "password":"password",
+        "port":0,
+        "database":"database"
+    }
+}
